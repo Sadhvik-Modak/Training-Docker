@@ -1,0 +1,22 @@
+name: Release
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build_and_publish_image:
+    runs-on: ubuntu-latest
+    name: Build Image and Push
+    steps:
+      - uses: actions/checkout@v2 # Clones your github repository to tghe machine where this pipeliine is running
+
+      - name: Login to Docker Hub
+        run: docker login -u sadhu1998 -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Image
+        run: |-
+          docker build . --file Dockerfile -t sadhu1998/api_test:${{ github.ref_name }}
+      - name: Push Image to GCR
+        run: |-
+          docker push sadhu1998/api_test:${{ github.ref_name }}
