@@ -14,7 +14,7 @@ with open('users.json') as f:
 # Define a basic route
 @app.get("/")
 def read_root():
-    return {"message": "Hello, v2!"}
+    return {"message": "Hello, v1.0.1!"}
 
 # Define a route to get user details
 # Path Parameter

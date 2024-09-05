@@ -17,6 +17,6 @@ jobs:
       - name: Build Image
         run: |-
           docker build . --file Dockerfile -t sadhu1998/api_test:${{ github.ref_name }}
-      - name: Push Image to GCR
+      - name: Push Image to Docker Hub
         run: |-
           docker push sadhu1998/api_test:${{ github.ref_name }}
